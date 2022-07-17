@@ -9,7 +9,7 @@ Cascadia Code PL \
 ### Installation
 `winget install JanDeDobbeleer.OhMyPosh`
 
-### Documentation
-[Website](https://ohmyposh.dev/) \
-[GitHub](https://github.com/jandedobbeleer/oh-my-posh) \
+### Links
+[Website - ohmyposh.dev](https://ohmyposh.dev/) \
+[GitHub - jandedobbeleer/oh-my-posh](https://github.com/jandedobbeleer/oh-my-posh) \
 [Documentation - Customize](https://ohmyposh.dev/docs/installation/customize)
