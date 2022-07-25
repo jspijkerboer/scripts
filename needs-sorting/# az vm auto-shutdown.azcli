@@ -1,0 +1,9 @@
+#time in utc, maybe location does the trick?
+az vm auto-shutdown --time 1730 --ids $(az vm list --resource-group JSPDEV20 --query "[].id" -o tsv)
+
+#az vm list-ip-addresses --ids $(az vm list -g MyResourceGroup --query "[].id" -o tsv)
+az disk update --sku StandardSSD_LRS --ids $(az disk list --query "[?name != 'jspdev-buildDisk'].id" -o tsv)
+
+# NSG
+az network nsg rule list --resource-group JSPDEV20 --nsg-name jspdev20-networksecuritygroup
+#az network nsg rule delete --ids $(az network nsg list --resource-group JSPDEV20)
