@@ -1,16 +1,21 @@
 [K:\AosService\PackagesLocalDirectory\Bin]
+# Model related commands
 .\ModelUtil.exe -import -metadatastorepath=K:\AosService\PackagesLocalDirectory -file=C:\Temp\model.axmodel
 .\ModelUtil.exe -export -metadatastorepath=K:\AosService\PackagesLocalDirectory -modelname=<model> -outputpath=C:\Temp
 .\ModelUtil.exe -delete -metadatastorepath=K:\AosService\PackagesLocalDirectory -modelname=<model>
 .\ModelUtil.exe -replace -metadatastorepath=K:\AosService\PackagesLocalDirectory -file=C:\Temp\AVADocumentProcessing-Avanade.axmodel
 
+# Set maintenance mode
 Microsoft.Dynamics.AX.Deployment.Setup.exe --metadatadir K:\AosService\PackagesLocalDirectory --bindir K:\AosService\PackagesLocalDirectory\Bin --sqlserver . --sqldatabase axdb --sqluser axdbadmin --sqlpwd <password> --setupmode maintenancemode --isinmaintenancemode true
 
+# Install deployable package (no dbsync)
 .\AXUpdateInstaller.exe devinstall
 
 [K:\AosService\WebRoot\bin]
+#Dynamics database sync
 Microsoft.Dynamics.AX.Deployment.Setup.exe -bindir "K:\AosService\PackagesLocalDirectory" -metadatadir "K:\AosService\PackagesLocalDirectory" -sqluser axdeployuser -sqlserver localhost -sqldatabase axdb -setupmode sync -syncmode fullall -isazuresql false -sqlpwd <password>
 
 [C:\Program Files (x86)\Microsoft SQL Server\130\DAC\bin]
+#Import/export bacpac
 SqlPackage.exe /a:export /ssn:nl1hhs-acc-appdbserver-5d9a8851.database.windows.net /sdn:nl1hhs-acc_axdb_a13f67dd09c90050 /tf:D:\Exportedbacpac\ACC_71.bacpac /p:CommandTimeout=1200 /p:VerifyFullTextDocumentTypesSupported=false /sp:<password> /su:sqladmin
 SqlPackage.exe /a:import /sf:D:\Exportedbacpac\ACC_71.bacpac /tsn:nl1hhs8acc-appdbserver-5c1fb382.database.windows.net /tu:sqladmin /tp:<password from LCS> /tdn:nl1hhs8acc_axdb_5c04bb22f2efced5 /p:CommandTimeout=1200 /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P2
