@@ -35,7 +35,7 @@
           "foreground": "#ffffff",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
-          "template": " {{ if gt .Code 0 }}\uf00d {{ .Meaning }}{{ else }}\uf42e{{ end }} ",
+          "template": " {{ if gt .Code 0 }}\u2718 {{ .Meaning }}{{ else }}\u2713{{ end }} ",
           "type": "exit"
         }
       ],
