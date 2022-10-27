@@ -1,0 +1,2 @@
+# Retrieving info for the signed in account.
+az ad signed-in-user show
